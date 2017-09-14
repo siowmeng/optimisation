@@ -1,2 +1,2 @@
 # optimisation
-Homework files of Optimisation and Decision Models
+Files for Optimisation & Decision Models assignments and prizes
