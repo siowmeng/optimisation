@@ -1,0 +1,7 @@
+# Use CPLEX solver for integer programming
+option solver cplex;
+model Ex3_Qn4c.mod;
+solve;
+
+display cost;
+display xC, xN, xA, xL, xD, xD2, yC, yN, yL, yD, yD2;

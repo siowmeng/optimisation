@@ -1,0 +1,7 @@
+# Use CPLEX solver for integer programming
+option solver cplex;
+model Ex3_Qn2.mod;
+solve;
+
+display ATM;
+display A, B, C, L, S, W;

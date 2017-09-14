@@ -1,0 +1,15 @@
+# AMPL setting to display solution to 2 decimal places
+option display_round 2;
+
+# Import model for Question 4c
+model Q4c.mod;
+
+# Solve the linear program
+solve;
+
+# Display optimal solution and objective value
+display s, b, h, v;
+display earnings;
+
+# Display the constraint values satisfied
+display carrots.body, mushrooms.body, greenpeppers.body, broccoli.body, corn.body;

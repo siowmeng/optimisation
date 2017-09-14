@@ -1,0 +1,12 @@
+# Import model for Question 3
+model Q3.mod;
+
+# Solve the linear program
+solve;
+
+# Display optimal solution and objective value
+display s, m;
+display profit;
+
+# Display the constraint values satisfied
+display underwriting.body, administration.body, claims.body;

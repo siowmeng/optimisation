@@ -1,0 +1,298 @@
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  VARIABLES AO, AT, AH, AD;
+   2  VARIABLES BO, BT, BH, BD;
+   3  VARIABLES CO, CT, CH, CD;
+   4   
+   5  VARIABLES Z;
+   6   
+   7  POSITIVE VARIABLES AO, AT, AH, AD;
+   8  POSITIVE VARIABLES BO, BT, BH, BD;
+   9  POSITIVE VARIABLES CO, CT, CH, CD;
+  10   
+  11  EQUATIONS Objective, Cap_A, Cap_B, Cap_C, Demand_O, Demand_T, Demand_H, Demand_D;
+  12   
+  13  Objective.. Z =E= 17 * (AO + AT + AH + AD) + 3 * AO + 2 * AT + 5 * AH + 7 * AD +
+  14  20 * (BO + BT + BH + BD) + 6 * BO + 4 * BT + 8 * BH + 3 * BD +
+  15  24 * (CO + CT + CH + CD) + 9 * CO + 1 * CT + 5 * CH + 4 * CD;
+  16   
+  17  Cap_A.. AO + AT + AH + AD =L= 800;
+  18  Cap_B.. BO + BT + BH + BD =L= 600;
+  19  Cap_C.. CO + CT + CH + CD =L= 700;
+  20  Demand_O.. AO + BO + CO =E= 300;
+  21  Demand_T.. AT + BT + CT =E= 500;
+  22  Demand_H.. AH + BH + CH =E= 400;
+  23  Demand_D.. AD + BD + CD =E= 600;
+  24   
+  25  MODEL JOHNSON / ALL /;
+  26   
+  27  SOLVE JOHNSON USING LP MINIMIZING Z;
+
+
+COMPILATION TIME     =        0.001 SECONDS      2 MB  24.5.4 r54492 DEX-DEG
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE JOHNSON Using LP From line 27
+
+
+---- Objective  =E=  
+
+Objective..  - 20*AO - 19*AT - 22*AH - 24*AD - 26*BO - 24*BT - 28*BH - 23*BD - 33*CO - 25*CT - 29*CH - 28*CD + Z =E= 0 ; (LHS = 0)
+     
+
+---- Cap_A  =L=  
+
+Cap_A..  AO + AT + AH + AD =L= 800 ; (LHS = 0)
+     
+
+---- Cap_B  =L=  
+
+Cap_B..  BO + BT + BH + BD =L= 600 ; (LHS = 0)
+     
+
+---- Cap_C  =L=  
+
+Cap_C..  CO + CT + CH + CD =L= 700 ; (LHS = 0)
+     
+
+---- Demand_O  =E=  
+
+Demand_O..  AO + BO + CO =E= 300 ; (LHS = 0, INFES = 300 ****)
+     
+
+---- Demand_T  =E=  
+
+Demand_T..  AT + BT + CT =E= 500 ; (LHS = 0, INFES = 500 ****)
+     
+
+---- Demand_H  =E=  
+
+Demand_H..  AH + BH + CH =E= 400 ; (LHS = 0, INFES = 400 ****)
+     
+
+---- Demand_D  =E=  
+
+Demand_D..  AD + BD + CD =E= 600 ; (LHS = 0, INFES = 600 ****)
+     
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE JOHNSON Using LP From line 27
+
+
+---- AO  
+
+AO
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -20       Objective
+        1       Cap_A
+        1       Demand_O
+
+
+---- AT  
+
+AT
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -19       Objective
+        1       Cap_A
+        1       Demand_T
+
+
+---- AH  
+
+AH
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -22       Objective
+        1       Cap_A
+        1       Demand_H
+
+
+---- AD  
+
+AD
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -24       Objective
+        1       Cap_A
+        1       Demand_D
+
+
+---- BO  
+
+BO
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -26       Objective
+        1       Cap_B
+        1       Demand_O
+
+
+---- BT  
+
+BT
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -24       Objective
+        1       Cap_B
+        1       Demand_T
+
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE JOHNSON Using LP From line 27
+
+
+---- BH  
+
+BH
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -28       Objective
+        1       Cap_B
+        1       Demand_H
+
+
+---- BD  
+
+BD
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -23       Objective
+        1       Cap_B
+        1       Demand_D
+
+
+---- CO  
+
+CO
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -33       Objective
+        1       Cap_C
+        1       Demand_O
+
+
+---- CT  
+
+CT
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -25       Objective
+        1       Cap_C
+        1       Demand_T
+
+
+---- CH  
+
+CH
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -29       Objective
+        1       Cap_C
+        1       Demand_H
+
+
+---- CD  
+
+CD
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      -28       Objective
+        1       Cap_C
+        1       Demand_D
+
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE JOHNSON Using LP From line 27
+
+
+---- Z  
+
+Z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       Objective
+
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE JOHNSON Using LP From line 27
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           8     SINGLE EQUATIONS            8
+BLOCKS OF VARIABLES          13     SINGLE VARIABLES           13
+NON ZERO ELEMENTS            37
+
+
+GENERATION TIME      =        0.004 SECONDS      3 MB  24.5.4 r54492 DEX-DEG
+
+
+EXECUTION TIME       =        0.004 SECONDS      3 MB  24.5.4 r54492 DEX-DEG
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE JOHNSON Using LP From line 27
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   JOHNSON             OBJECTIVE  Z
+     TYPE    LP                  DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  27
+
+**** SOLVER STATUS     1 Normal Completion         
+**** MODEL STATUS      1 Optimal                   
+**** OBJECTIVE VALUE            40500.0000
+
+ RESOURCE USAGE, LIMIT          0.005      1000.000
+ ITERATION COUNT, LIMIT         6    2000000000
+
+IBM ILOG CPLEX   24.5.4 r54492 Released Oct 15, 2015 DEG x86 64bit/MacOS X    
+Cplex 12.6.2.0
+
+Space for names approximately 0.00 Mb
+Use option 'names no' to turn use of names off
+LP status(1): optimal
+Cplex Time: 0.00sec (det. 0.02 ticks)
+Optimal solution found.
+Objective :       40500.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU Objective           .              .              .             1.0000      
+---- EQU Cap_A             -INF          800.0000       800.0000        -6.0000      
+---- EQU Cap_B             -INF          600.0000       600.0000        -1.0000      
+---- EQU Cap_C             -INF          400.0000       700.0000          .          
+---- EQU Demand_O         300.0000       300.0000       300.0000        26.0000      
+---- EQU Demand_T         500.0000       500.0000       500.0000        25.0000      
+---- EQU Demand_H         400.0000       400.0000       400.0000        28.0000      
+---- EQU Demand_D         600.0000       600.0000       600.0000        24.0000      
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR AO                  .           300.0000        +INF             .          
+---- VAR AT                  .           100.0000        +INF             .          
+---- VAR AH                  .           400.0000        +INF             .          
+---- VAR AD                  .              .            +INF            6.0000      
+---- VAR BO                  .              .            +INF            1.0000      
+---- VAR BT                  .              .            +INF             .          
+---- VAR BH                  .              .            +INF            1.0000      
+---- VAR BD                  .           600.0000        +INF             .          
+---- VAR CO                  .              .            +INF            7.0000      
+---- VAR CT                  .           400.0000        +INF             .          
+---- VAR CH                  .              .            +INF            1.0000      
+---- VAR CD                  .              .            +INF            4.0000      
+---- VAR Z                 -INF        40500.0000        +INF             .          
+GAMS 24.5.4  r54492 Released Oct 15, 2015 DEX-DEG x86 64bit/MacOS X                                                                                                                                                                    11/25/15 17:57:03 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE JOHNSON Using LP From line 27
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+
+
+EXECUTION TIME       =        0.001 SECONDS      2 MB  24.5.4 r54492 DEX-DEG
+
+
+USER: GAMS Development Corporation, Washington, DC   G871201/0000CA-ANY
+      Free Demo,  202-342-0180,  sales@gams.com,  www.gams.com   DC0000
+
+
+**** FILE SUMMARY
+
+Input      /Users/wolframwiesemann/Desktop/johnson.gms
+Output     /Users/wolframwiesemann/Desktop/johnson.lst

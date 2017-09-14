@@ -1,0 +1,14 @@
+# AMPL setting to display solution to 4 decimal places
+option display_round 4;
+
+# Import model for Question 4b
+model Qn4b.mod;
+
+# Solve the linear program
+solve;
+
+# Display optimal solution and objective value
+display beta_years, beta_stock, beta_sales, beta_mba;
+display residuals;
+
+
